@@ -1,0 +1,49 @@
+﻿@model IEnumerable<University_II.ViewModels.StudentMySubjectsViewModel>
+@{
+    ViewBag.Title = "MySubjects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Subjects of @Model.ToArray()[0].student.Name</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Course
+        </th>
+        <th>
+            Subject
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.course.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.studentSubject.Subject.Title)
+            </td>
+        </tr>
+
+    }
+
+
+</table>
+
+@if (User.IsInRole("Student"))
+{
+    <p></p>
+    @Html.ActionLink("See Student's Grades", "Grades", "Student", new { id = Model.ToArray()[0].student.ID }, null)
+    <p></p>
+}
+
+@if (User.IsInRole("Secretary"))
+{
+    <p></p>
+    @Html.ActionLink("Update Student", "Edit", "Student", new { id = Model.ToArray()[0].student.ID }, null)
+    <p></p>
+    @Html.ActionLink("Delete Student", "Delete", "Student", new { id = Model.ToArray()[0].student.ID }, null)
+}
+

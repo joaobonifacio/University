@@ -1,0 +1,51 @@
+﻿@model IEnumerable<University_II.ViewModels.TeacherSubjectNumberOfStudentsViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>University's Subjects</h2>
+
+@{ if (User.IsInRole("Teacher"))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    }
+}
+
+@foreach(var item in Model)
+{
+    string studentName = item.Teacher.Name;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher.Name)
+        </th>
+        <th>
+            Number of Students Enrolled
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.ActionLink(item.Subject.Title, "Details", "Subject", new { id = item.Subject.ID }, null)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Teacher.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NumberOfStudents)
+    </td>
+</tr>
+    }
+
+</table>

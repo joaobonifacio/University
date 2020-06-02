@@ -1,0 +1,107 @@
+﻿@using System.Collections
+@using University_II.Models
+@model IEnumerable<University_II.ViewModels.TeacherSubjectPairsViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Teachers</h2>
+
+@if (User.IsInRole("Secretary"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<p></p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ToArray()[0].Teacher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToArray()[0].Subject)
+        </th>
+
+        @if (User.IsInRole("Dean") || User.IsInRole("Secretary") || User.IsInRole("Teacher"))
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.ToArray()[0].Teacher.Salary)
+            </th>
+        }
+        @if (User.IsInRole("Secretary") || User.IsInRole("Teacher"))
+        {
+            <th>
+            </th>
+        }
+        @if (User.IsInRole("Dean"))
+        {
+            <th>
+            </th>
+        }
+        @if (User.IsInRole("Dean"))
+        {
+            <th>
+            </th>
+        }
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Teacher.Name, "Details", "Teacher",
+               new { teacherId = item.Teacher.Id }, null)
+            </td>
+            <td>
+                @if (item.Subject != null)
+                {
+                    @Html.ActionLink(item.Subject.Title, "Details", "Teacher",
+                   new { teacherId = item.Teacher.Id }, null
+)
+                }
+                else
+                {
+                    @Html.ActionLink("-", "Details", "Teacher")
+                }
+            </td>
+            @if (User.IsInRole("Dean") || User.IsInRole("Secretary") || User.IsInRole("Teacher"))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teacher.Salary)
+                </td>
+            }
+
+            @if (User.IsInRole("Secretary"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Teacher", new { id = item.Teacher.Id }, null)
+                </td>
+            }
+
+            @if (User.IsInRole("Dean"))
+            {
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Teacher.Id })
+                </td>
+            }
+
+            @if (User.IsInRole("Dean") && item.Subject != null)
+            {
+                <td>
+                    @Html.ActionLink("Change Teacher", "ChangeTeacher", new { id = item.Teacher.Id })
+                </td>
+            }
+        </tr>
+    }
+
+</table>
+
+      
+
+

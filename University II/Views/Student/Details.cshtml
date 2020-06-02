@@ -1,0 +1,50 @@
+﻿@model University_II.ViewModels.StudentAverageGradeViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Student Details</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Course
+        </th>
+        <th>
+            Student Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Average Grade
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.course.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.student.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.student.Email)
+        <td>
+            @Html.DisplayFor(model => model.grade)
+        </td>
+    </tr>
+</table>
+
+@Html.ActionLink("See Student's Grades", "Grades", "Student", new { id = Model.student.ID }, null) |
+@Html.ActionLink("Return to List", "Index", "Student")
+
+@if (User.IsInRole("Secretary"))
+{
+    <p></p>
+    @Html.ActionLink("Update Student", "Edit", "Student", new { id = Model.student.ID }, null)
+    <p></p>
+    @Html.ActionLink("Delete Student", "Delete", "Student", new { id = Model.student.ID }, null)
+}

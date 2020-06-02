@@ -1,0 +1,50 @@
+﻿@model University_II.Models.Teacher
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "Teacher"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Salary)
+    @Html.EditorFor(model => model.Salary, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Salary, "", new { @class = "text-danger" })
+
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Email)
+    @Html.EditorFor(model => model.Email, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

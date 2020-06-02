@@ -1,0 +1,66 @@
+﻿@model IEnumerable<University_II.ViewModels.CourseTeachersStudentsAverageGradesModelView>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>University's Courses</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <h2>Course</h2>
+        </th>
+        <th>
+            <h2>Number of Teachers</h2>
+        </th>
+        <th>
+            <h2>Number of Enrolled Students</h2>
+        </th>
+        <th>
+            <h2>Average Student Grade</h2>
+        </th>
+        @if (User.IsInRole("Dean"))
+        {
+            <th></th>
+            <th></th>
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Course.Title, "Details", "Course", new { id = item.Course.Id }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numberOfTeachers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numberOfStudents)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.averageGrade)
+            </td>
+            
+            @if (User.IsInRole("Dean"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Course", new { id = item.Course.Id }, null)
+                </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", "Course", new { id = item.Course.Id }, null)
+            </td>
+            }
+        </tr>
+        }
+</table>
+
+@if (User.IsInRole("Dean"))
+{
+    @Html.ActionLink("Create New Course", "Create", "Course")
+}
+
+

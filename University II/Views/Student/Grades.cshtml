@@ -1,0 +1,38 @@
+﻿@model List<University_II.Models.StudentSubject>
+@{
+    ViewBag.Title = "Grades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Grades</h2>
+
+<table class="table">
+
+    <tr>
+        <th>
+            Subject
+        </th>
+        <th>
+            Grade
+        </th>
+        <p></p>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Subject.Title, "Details", "Subject", new { id = item.SubjectID }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+        </tr>
+
+    }
+</table>
+<p></p>
+<p></p>
+@Html.ActionLink("Return to Student Details", "Details", "Student", new { id = Model.ToArray()[0].Student.ID }, null)
+
+

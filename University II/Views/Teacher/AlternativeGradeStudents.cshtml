@@ -1,0 +1,66 @@
+﻿@using University_II.Models
+@model IEnumerable<StudentSubject>
+
+@{
+    ViewBag.Title = "GradeStudents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Grade Students</h2>
+
+@using (Html.BeginForm("Save", "StudentSubject"))
+{
+
+    <table class="table">
+
+        <tr>
+            <th>
+                Student Name
+            </th>
+            <th>
+                Student Id
+            </th>
+            <th>
+                Student Subject Id
+            </th>
+            <th>
+                Subject Id
+            </th>
+            <th>
+                <p>Grade</p>
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        <div class="form-group">
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentSubjectID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubjectID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit Grade", "EditGrade", "StudentSubject", 
+                            new{ studentSubjectId = item.StudentSubjectID}, "")
+                    </td>
+                </tr>
+            }
+
+        </div>
+    </table>
+}

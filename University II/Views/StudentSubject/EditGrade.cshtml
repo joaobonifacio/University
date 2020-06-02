@@ -1,0 +1,59 @@
+﻿@model  University_II.Models.StudentSubject
+
+@{
+    ViewBag.Title = "EditGrade";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditGrade</h2>
+
+@using (Html.BeginForm("Save", "StudentSubject"))
+{
+
+    <table class="table">
+
+        <tr>
+            <th>
+                Student Name
+            </th>
+            <th>
+                Student Id
+            </th>
+            <th>
+                Student Subject Id
+            </th>
+            <th>
+                Subject Id
+            </th>
+            <th>
+                <p>Grade</p>
+            </th>
+        </tr>
+
+        <div class="form-group">
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Student.Name, new { @class = "form-control" })
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.StudentID, new { @class = "form-control" })
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.StudentSubjectID, new { @class = "form-control" })
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.SubjectID, new { @class = "form-control" })
+                </td>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.Grade, "Select Grade", new { @class = "form-control" })
+                </td>
+            </tr>
+        </div>
+    </table>
+
+    @Html.HiddenFor(model => model.StudentSubjectID);
+    @Html.AntiForgeryToken()
+    <button type="submit" class=" btn btn-primary">Save</button>
+}
+

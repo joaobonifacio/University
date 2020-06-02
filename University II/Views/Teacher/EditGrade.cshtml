@@ -1,0 +1,40 @@
+﻿@model  University_II.Models.StudentSubject
+@{
+    ViewBag.Title = "GradeStudents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Grade @Html.DisplayFor(model => model.Subject.Title) Students</h2>
+
+
+@using (Html.BeginForm("SaveGrade", "Teacher"))
+{
+    @Html.HiddenFor(m => m.StudentSubjectID)
+
+    <table class="table">
+
+        <tr>
+            <td>
+                @Html.DisplayFor(m => m.Student.Name, new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Subject.Title, new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.EnumDropDownListFor(m => m.Grade, "Choose Grade", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Grade, "Please choose a grade", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </table>
+
+    <p></p>
+    
+    @Html.ActionLink("Back to List", "MyStudents", "Teacher")
+    
+    <p></p>
+
+    @Html.AntiForgeryToken()
+    <button type="submit" class=" btn btn-primary">Save</button>
+}
+
+

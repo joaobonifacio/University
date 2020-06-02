@@ -1,0 +1,37 @@
+﻿@model IEnumerable<University_II.ViewModels.TeacherSubjectNumberOfStudentsViewModel>
+@{
+    ViewBag.Title = "My Subjects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Subjects</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher.Name)
+        </th>
+        <th>
+            <p>Number of enrolled students</p>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.ActionLink(item.Subject.Title , "Edit", "Subject", new { id = item.Subject.ID }, null)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NumberOfStudents)
+    </td>
+    <td>
+        @Html.ActionLink("See Grades", "GradeStudents", "Teacher", new { subjectID = item.Subject.ID }, null)
+    </td>
+</tr>
+    }
+
+
+</table>
+
+

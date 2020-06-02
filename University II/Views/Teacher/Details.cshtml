@@ -1,0 +1,60 @@
+﻿@model University_II.Models.Teacher
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Teacher Details</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        @{
+            if (User.IsInRole("Dean") || User.IsInRole("Secretary") || User.IsInRole("Teacher"))
+            {
+                <th>
+                    @Html.DisplayFor(model => model.Salary)
+                </th>
+            }
+        }
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Email)
+        </td>
+        @{
+            if (User.IsInRole("Dean") || User.IsInRole("Secretary") || User.IsInRole("Teacher"))
+            {
+                <td>
+                    @Html.DisplayFor(model => model.Salary)
+                </td>
+            }
+        }
+    </tr>
+</table>
+
+@if (User.IsInRole("Secretary"))
+{
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, null)
+
+}
+<p></p>
+<p>
+    @Html.ActionLink("Teacher's Students Grades", "TeacherStudentsAndGrades", "Teacher",
+    new { teacherId = Model.Id}, null)
+</p>
+
+<p></p>
+
+@Html.ActionLink("Back to List", "Index")
+

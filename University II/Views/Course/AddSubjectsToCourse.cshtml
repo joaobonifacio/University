@@ -1,0 +1,32 @@
+﻿@model IEnumerable<University_II.Models.Subject>
+@{
+    ViewBag.Title = "AddSubjectsToCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add SubjectsTo Course</h2>
+
+<table class="table">
+
+    <tr>
+        <th>Subject</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.ActionLink("Choose", "ValidateCourseSubject", "Course", new 
+           { chosenSubjectId = item.ID}, null)
+            </td>
+        </tr>
+    }
+
+    @Html.AntiForgeryToken()
+
+</table>
+

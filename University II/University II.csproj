@@ -1,0 +1,769 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C3FD85CB-5356-4323-9C86-9465FE7D6888}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>University_II</RootNamespace>
+    <AssemblyName>University II</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44387</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\CoursesController.cs" />
+    <Compile Include="Controllers\API\NonAllocatedTeachersController.cs" />
+    <Compile Include="Controllers\API\StaffMembersController.cs" />
+    <Compile Include="Controllers\API\StudentsController.cs" />
+    <Compile Include="Controllers\API\StudentSubjectsController.cs" />
+    <Compile Include="Controllers\API\TeachersController.cs" />
+    <Compile Include="Controllers\API\UniversityStudentsListsController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CourseSubjectController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentSubjectController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="Controllers\API\SubjectsController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="DTOs\CourseDTO.cs" />
+    <Compile Include="DTOs\StaffMemberDTO.cs" />
+    <Compile Include="DTOs\SubjectDTO.cs" />
+    <Compile Include="DTOs\TeacherDTO.cs" />
+    <Compile Include="DTOs\UniversityStudentListDTO.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201659054_InitialModel.cs" />
+    <Compile Include="Migrations\202005201659054_InitialModel.designer.cs">
+      <DependentUpon>202005201659054_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201703512_PopulateUNiversityStudents.cs" />
+    <Compile Include="Migrations\202005201703512_PopulateUNiversityStudents.designer.cs">
+      <DependentUpon>202005201703512_PopulateUNiversityStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201708167_CHangeInUniversityStudentsModel.cs" />
+    <Compile Include="Migrations\202005201708167_CHangeInUniversityStudentsModel.designer.cs">
+      <DependentUpon>202005201708167_CHangeInUniversityStudentsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201709262_PopulateUniversityWithDOzensOfStudents.cs" />
+    <Compile Include="Migrations\202005201709262_PopulateUniversityWithDOzensOfStudents.designer.cs">
+      <DependentUpon>202005201709262_PopulateUniversityWithDOzensOfStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201717038_PopulateCourses.cs" />
+    <Compile Include="Migrations\202005201717038_PopulateCourses.designer.cs">
+      <DependentUpon>202005201717038_PopulateCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201733018_PopulateSubjects.cs" />
+    <Compile Include="Migrations\202005201733018_PopulateSubjects.designer.cs">
+      <DependentUpon>202005201733018_PopulateSubjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201735240_PopulateTenSubjects.cs" />
+    <Compile Include="Migrations\202005201735240_PopulateTenSubjects.designer.cs">
+      <DependentUpon>202005201735240_PopulateTenSubjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201749013_ChangesToModelAndModelNames.cs" />
+    <Compile Include="Migrations\202005201749013_ChangesToModelAndModelNames.designer.cs">
+      <DependentUpon>202005201749013_ChangesToModelAndModelNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201751535_PopulateCourseSubject.cs" />
+    <Compile Include="Migrations\202005201751535_PopulateCourseSubject.designer.cs">
+      <DependentUpon>202005201751535_PopulateCourseSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201754420_PopulateThe4RemainingSubjectsInFirstCourseInCourseSubjects.cs" />
+    <Compile Include="Migrations\202005201754420_PopulateThe4RemainingSubjectsInFirstCourseInCourseSubjects.designer.cs">
+      <DependentUpon>202005201754420_PopulateThe4RemainingSubjectsInFirstCourseInCourseSubjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201757185_PopulateOneSubjectOfPhysicsInCourseSubjetcs.cs" />
+    <Compile Include="Migrations\202005201757185_PopulateOneSubjectOfPhysicsInCourseSubjetcs.designer.cs">
+      <DependentUpon>202005201757185_PopulateOneSubjectOfPhysicsInCourseSubjetcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201758443_PopulateMorePhysicsCourseSubjects.cs" />
+    <Compile Include="Migrations\202005201758443_PopulateMorePhysicsCourseSubjects.designer.cs">
+      <DependentUpon>202005201758443_PopulateMorePhysicsCourseSubjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201800034_PopulateRemaningPhysicsSubjectsInCOurseSubjetcs.cs" />
+    <Compile Include="Migrations\202005201800034_PopulateRemaningPhysicsSubjectsInCOurseSubjetcs.designer.cs">
+      <DependentUpon>202005201800034_PopulateRemaningPhysicsSubjectsInCOurseSubjetcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201850300_ChangeInSubjectModel.cs" />
+    <Compile Include="Migrations\202005201850300_ChangeInSubjectModel.designer.cs">
+      <DependentUpon>202005201850300_ChangeInSubjectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201851494_PopulateTeachers.cs" />
+    <Compile Include="Migrations\202005201851494_PopulateTeachers.designer.cs">
+      <DependentUpon>202005201851494_PopulateTeachers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201854212_PopulateAllTeachers.cs" />
+    <Compile Include="Migrations\202005201854212_PopulateAllTeachers.designer.cs">
+      <DependentUpon>202005201854212_PopulateAllTeachers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201906041_PopulateSubjectsWithTeachers.cs" />
+    <Compile Include="Migrations\202005201906041_PopulateSubjectsWithTeachers.designer.cs">
+      <DependentUpon>202005201906041_PopulateSubjectsWithTeachers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005202158313_PopulateTeachersInSubjectsTable.cs" />
+    <Compile Include="Migrations\202005202158313_PopulateTeachersInSubjectsTable.designer.cs">
+      <DependentUpon>202005202158313_PopulateTeachersInSubjectsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005202206252_PutATeacherInStudentClass.cs" />
+    <Compile Include="Migrations\202005202206252_PutATeacherInStudentClass.designer.cs">
+      <DependentUpon>202005202206252_PutATeacherInStudentClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211209196_AddedCourseIdToStudentModel.cs" />
+    <Compile Include="Migrations\202005211209196_AddedCourseIdToStudentModel.designer.cs">
+      <DependentUpon>202005211209196_AddedCourseIdToStudentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211522206_AddedEMailToTeacher.cs" />
+    <Compile Include="Migrations\202005211522206_AddedEMailToTeacher.designer.cs">
+      <DependentUpon>202005211522206_AddedEMailToTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211529176_CReatedModelStaff.cs" />
+    <Compile Include="Migrations\202005211529176_CReatedModelStaff.designer.cs">
+      <DependentUpon>202005211529176_CReatedModelStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211530210_UpdateEmailsInTeachers.cs" />
+    <Compile Include="Migrations\202005211530210_UpdateEmailsInTeachers.designer.cs">
+      <DependentUpon>202005211530210_UpdateEmailsInTeachers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211533211_UpdateEmailsInTeachers1.cs" />
+    <Compile Include="Migrations\202005211533211_UpdateEmailsInTeachers1.designer.cs">
+      <DependentUpon>202005211533211_UpdateEmailsInTeachers1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211535513_UpdateTheRestOfTeachersEmails.cs" />
+    <Compile Include="Migrations\202005211535513_UpdateTheRestOfTeachersEmails.designer.cs">
+      <DependentUpon>202005211535513_UpdateTheRestOfTeachersEmails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211538494_PopulateStaffMembers.cs" />
+    <Compile Include="Migrations\202005211538494_PopulateStaffMembers.designer.cs">
+      <DependentUpon>202005211538494_PopulateStaffMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211542545_PopulateTheRestOfStaffMembers.cs" />
+    <Compile Include="Migrations\202005211542545_PopulateTheRestOfStaffMembers.designer.cs">
+      <DependentUpon>202005211542545_PopulateTheRestOfStaffMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211636173_changesToStaffMemberModel.cs" />
+    <Compile Include="Migrations\202005211636173_changesToStaffMemberModel.designer.cs">
+      <DependentUpon>202005211636173_changesToStaffMemberModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211637101_UpdateStaffTableWithTitles.cs" />
+    <Compile Include="Migrations\202005211637101_UpdateStaffTableWithTitles.designer.cs">
+      <DependentUpon>202005211637101_UpdateStaffTableWithTitles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211641140_updateRemainingStaffMembersWitTitle.cs" />
+    <Compile Include="Migrations\202005211641140_updateRemainingStaffMembersWitTitle.designer.cs">
+      <DependentUpon>202005211641140_updateRemainingStaffMembersWitTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005221055166_ChangeInStudentModel.cs" />
+    <Compile Include="Migrations\202005221055166_ChangeInStudentModel.designer.cs">
+      <DependentUpon>202005221055166_ChangeInStudentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005221140111_UpdateStudent.cs" />
+    <Compile Include="Migrations\202005221140111_UpdateStudent.designer.cs">
+      <DependentUpon>202005221140111_UpdateStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005221143306_UpdateStudent1.cs" />
+    <Compile Include="Migrations\202005221143306_UpdateStudent1.designer.cs">
+      <DependentUpon>202005221143306_UpdateStudent1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005221150316_ChangeIsEnrolledInStudent1.cs" />
+    <Compile Include="Migrations\202005221150316_ChangeIsEnrolledInStudent1.designer.cs">
+      <DependentUpon>202005221150316_ChangeIsEnrolledInStudent1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005231006385_ChangeInCourseSubjectModel.cs" />
+    <Compile Include="Migrations\202005231006385_ChangeInCourseSubjectModel.designer.cs">
+      <DependentUpon>202005231006385_ChangeInCourseSubjectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251403225_CreatedModelSubjectToCreateACourse.cs" />
+    <Compile Include="Migrations\202005251403225_CreatedModelSubjectToCreateACourse.designer.cs">
+      <DependentUpon>202005251403225_CreatedModelSubjectToCreateACourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251533448_changeInSubjectToCReateACourse.cs" />
+    <Compile Include="Migrations\202005251533448_changeInSubjectToCReateACourse.designer.cs">
+      <DependentUpon>202005251533448_changeInSubjectToCReateACourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251638540_DeletedModelSubjectToYadaYadaYada.cs" />
+    <Compile Include="Migrations\202005251638540_DeletedModelSubjectToYadaYadaYada.designer.cs">
+      <DependentUpon>202005251638540_DeletedModelSubjectToYadaYadaYada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005271209017_AddUniversityStudent.cs" />
+    <Compile Include="Migrations\202005271209017_AddUniversityStudent.designer.cs">
+      <DependentUpon>202005271209017_AddUniversityStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012148467_ChangesInAccountViewModel.cs" />
+    <Compile Include="Migrations\202006012148467_ChangesInAccountViewModel.designer.cs">
+      <DependentUpon>202006012148467_ChangesInAccountViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012217367_AddedRequiredToCourseModel.cs" />
+    <Compile Include="Migrations\202006012217367_AddedRequiredToCourseModel.designer.cs">
+      <DependentUpon>202006012217367_AddedRequiredToCourseModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012244367_AddedRequiredAnnotationToTeacherModel.cs" />
+    <Compile Include="Migrations\202006012244367_AddedRequiredAnnotationToTeacherModel.designer.cs">
+      <DependentUpon>202006012244367_AddedRequiredAnnotationToTeacherModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012247057_ChangeToTeacherModel.cs" />
+    <Compile Include="Migrations\202006012247057_ChangeToTeacherModel.designer.cs">
+      <DependentUpon>202006012247057_ChangeToTeacherModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012248419_AnotherChangeInTeacher.cs" />
+    <Compile Include="Migrations\202006012248419_AnotherChangeInTeacher.designer.cs">
+      <DependentUpon>202006012248419_AnotherChangeInTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012307050_AddedRequiredToUnis«versityStudentList.cs" />
+    <Compile Include="Migrations\202006012307050_AddedRequiredToUnis«versityStudentList.designer.cs">
+      <DependentUpon>202006012307050_AddedRequiredToUnis«versityStudentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012314491_furtherRequiredsInUniStudentModel.cs" />
+    <Compile Include="Migrations\202006012314491_furtherRequiredsInUniStudentModel.designer.cs">
+      <DependentUpon>202006012314491_furtherRequiredsInUniStudentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012344284_AddedRequiredToSubjectModel.cs" />
+    <Compile Include="Migrations\202006012344284_AddedRequiredToSubjectModel.designer.cs">
+      <DependentUpon>202006012344284_AddedRequiredToSubjectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012352061_AnotherChangeInSubjectModel.cs" />
+    <Compile Include="Migrations\202006012352061_AnotherChangeInSubjectModel.designer.cs">
+      <DependentUpon>202006012352061_AnotherChangeInSubjectModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="DTOs\CourseCreator.cs" />
+    <Compile Include="DTOs\StudentSubjectToExpose.cs" />
+    <Compile Include="DTOs\CourseToExpose.cs" />
+    <Compile Include="DTOs\StudentToExpose.cs" />
+    <Compile Include="DTOs\SubjectToExpose.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseSubject.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\StaffMember.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentSubject.cs" />
+    <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\Teacher.cs" />
+    <Compile Include="Models\UniversityStudentsList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\API\CoursesService.cs" />
+    <Compile Include="Services\API\CourseToExposeService.cs" />
+    <Compile Include="Services\API\StaffsService.cs" />
+    <Compile Include="Services\API\StudentsService.cs" />
+    <Compile Include="Services\API\StudentSubjectsService.cs" />
+    <Compile Include="Services\API\StudentSubjectToExposeService.cs" />
+    <Compile Include="Services\API\StudentToExposeService.cs" />
+    <Compile Include="Services\API\SubjectsService.cs" />
+    <Compile Include="Services\API\SubjectToExposeService.cs" />
+    <Compile Include="Services\API\TeachersService.cs" />
+    <Compile Include="Services\API\UniversityStudentsListsService.cs" />
+    <Compile Include="Services\CourseService.cs" />
+    <Compile Include="Services\CourseSubjectService.cs" />
+    <Compile Include="Services\CourseCreatorSingleton.cs" />
+    <Compile Include="Services\GradeService.cs" />
+    <Compile Include="Services\HireTeacherSingleton.cs" />
+    <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\RegisterService.cs" />
+    <Compile Include="Services\StaffService.cs" />
+    <Compile Include="Services\StudentRegisterService.cs" />
+    <Compile Include="Services\StudentService.cs" />
+    <Compile Include="Services\StudentSubjectService.cs" />
+    <Compile Include="Services\SubjectService.cs" />
+    <Compile Include="Services\TeacherService.cs" />
+    <Compile Include="Services\UniversityStudentsListService.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ChooseCourseSubjectsViewModel.cs" />
+    <Compile Include="ViewModels\CourseStudentSubjectViewModel.cs" />
+    <Compile Include="ViewModels\CourseTeachersStudentsAverageGradesModelView.cs" />
+    <Compile Include="ViewModels\EditStudentViewModel.cs" />
+    <Compile Include="ViewModels\HireNewTeacherViewModel.cs" />
+    <Compile Include="ViewModels\StudentAverageGradeViewModel.cs" />
+    <Compile Include="ViewModels\StudentMySubjectsViewModel.cs" />
+    <Compile Include="ViewModels\TeachersToReplaceViewModel.cs" />
+    <Compile Include="ViewModels\TeacherSubjectPairsViewModel.cs" />
+    <Compile Include="ViewModels\TypeOfTeacherReplacementViewModel.cs" />
+    <Compile Include="ViewModels\UniversityStudentCreationViewModel.cs" />
+    <Compile Include="ViewModels\StudentSubjectIDViewModel.cs" />
+    <Compile Include="ViewModels\TeacherStudentsAndGradesViewModel.cs" />
+    <Compile Include="ViewModels\TeacherStudentSubjectViewModel.cs" />
+    <Compile Include="ViewModels\TeacherSubjectNumberOfStudentsViewModel.cs" />
+    <Compile Include="ViewModels\TeacherSubjectViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Student\CreateUniversityStudent.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Subject\Create.cshtml" />
+    <Content Include="Views\Subject\Delete.cshtml" />
+    <Content Include="Views\Subject\Details.cshtml" />
+    <Content Include="Views\Subject\Edit.cshtml" />
+    <Content Include="Views\Subject\Index.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Teacher\Create.cshtml" />
+    <Content Include="Views\Teacher\Delete.cshtml" />
+    <Content Include="Views\Teacher\Details.cshtml" />
+    <Content Include="Views\Teacher\Edit.cshtml" />
+    <Content Include="Views\Teacher\Index.cshtml" />
+    <Content Include="Views\Teacher\MySubjects.cshtml" />
+    <Content Include="Views\Teacher\EditGrade.cshtml" />
+    <Content Include="Views\StudentSubject\Create.cshtml" />
+    <Content Include="Views\StudentSubject\Delete.cshtml" />
+    <Content Include="Views\StudentSubject\Details.cshtml" />
+    <Content Include="Views\StudentSubject\Edit.cshtml" />
+    <Content Include="Views\StudentSubject\Index.cshtml" />
+    <Content Include="Views\Teacher\AlternativeGradeStudents.cshtml" />
+    <Content Include="Views\StudentSubject\EditGrade.cshtml" />
+    <Content Include="Views\Teacher\MyStudents.cshtml" />
+    <Content Include="Views\Student\ShowSpecificStudent.cshtml" />
+    <Content Include="Views\CourseSubject\Create.cshtml" />
+    <Content Include="Views\CourseSubject\Delete.cshtml" />
+    <Content Include="Views\CourseSubject\Details.cshtml" />
+    <Content Include="Views\CourseSubject\Edit.cshtml" />
+    <Content Include="Views\CourseSubject\Index.cshtml" />
+    <Content Include="Views\Student\Grades.cshtml" />
+    <Content Include="Views\Course\AddSubjectsToCourse.cshtml" />
+    <Content Include="Views\Teacher\TeacherStudentsAndGrades.cshtml" />
+    <Content Include="Views\Student\MySubjects.cshtml" />
+    <Content Include="Views\Teacher\HireNewTeacher.cshtml" />
+    <Content Include="Views\Teacher\TypeOfReplacement.cshtml" />
+    <Content Include="Views\Subject\EditCredits.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202005201659054_InitialModel.resx">
+      <DependentUpon>202005201659054_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201703512_PopulateUNiversityStudents.resx">
+      <DependentUpon>202005201703512_PopulateUNiversityStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201708167_CHangeInUniversityStudentsModel.resx">
+      <DependentUpon>202005201708167_CHangeInUniversityStudentsModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201709262_PopulateUniversityWithDOzensOfStudents.resx">
+      <DependentUpon>202005201709262_PopulateUniversityWithDOzensOfStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201717038_PopulateCourses.resx">
+      <DependentUpon>202005201717038_PopulateCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201733018_PopulateSubjects.resx">
+      <DependentUpon>202005201733018_PopulateSubjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201735240_PopulateTenSubjects.resx">
+      <DependentUpon>202005201735240_PopulateTenSubjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201749013_ChangesToModelAndModelNames.resx">
+      <DependentUpon>202005201749013_ChangesToModelAndModelNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201751535_PopulateCourseSubject.resx">
+      <DependentUpon>202005201751535_PopulateCourseSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201754420_PopulateThe4RemainingSubjectsInFirstCourseInCourseSubjects.resx">
+      <DependentUpon>202005201754420_PopulateThe4RemainingSubjectsInFirstCourseInCourseSubjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201757185_PopulateOneSubjectOfPhysicsInCourseSubjetcs.resx">
+      <DependentUpon>202005201757185_PopulateOneSubjectOfPhysicsInCourseSubjetcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201758443_PopulateMorePhysicsCourseSubjects.resx">
+      <DependentUpon>202005201758443_PopulateMorePhysicsCourseSubjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201800034_PopulateRemaningPhysicsSubjectsInCOurseSubjetcs.resx">
+      <DependentUpon>202005201800034_PopulateRemaningPhysicsSubjectsInCOurseSubjetcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201850300_ChangeInSubjectModel.resx">
+      <DependentUpon>202005201850300_ChangeInSubjectModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201851494_PopulateTeachers.resx">
+      <DependentUpon>202005201851494_PopulateTeachers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201854212_PopulateAllTeachers.resx">
+      <DependentUpon>202005201854212_PopulateAllTeachers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201906041_PopulateSubjectsWithTeachers.resx">
+      <DependentUpon>202005201906041_PopulateSubjectsWithTeachers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005202158313_PopulateTeachersInSubjectsTable.resx">
+      <DependentUpon>202005202158313_PopulateTeachersInSubjectsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005202206252_PutATeacherInStudentClass.resx">
+      <DependentUpon>202005202206252_PutATeacherInStudentClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211209196_AddedCourseIdToStudentModel.resx">
+      <DependentUpon>202005211209196_AddedCourseIdToStudentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211522206_AddedEMailToTeacher.resx">
+      <DependentUpon>202005211522206_AddedEMailToTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211529176_CReatedModelStaff.resx">
+      <DependentUpon>202005211529176_CReatedModelStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211530210_UpdateEmailsInTeachers.resx">
+      <DependentUpon>202005211530210_UpdateEmailsInTeachers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211533211_UpdateEmailsInTeachers1.resx">
+      <DependentUpon>202005211533211_UpdateEmailsInTeachers1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211535513_UpdateTheRestOfTeachersEmails.resx">
+      <DependentUpon>202005211535513_UpdateTheRestOfTeachersEmails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211538494_PopulateStaffMembers.resx">
+      <DependentUpon>202005211538494_PopulateStaffMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211542545_PopulateTheRestOfStaffMembers.resx">
+      <DependentUpon>202005211542545_PopulateTheRestOfStaffMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211636173_changesToStaffMemberModel.resx">
+      <DependentUpon>202005211636173_changesToStaffMemberModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211637101_UpdateStaffTableWithTitles.resx">
+      <DependentUpon>202005211637101_UpdateStaffTableWithTitles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211641140_updateRemainingStaffMembersWitTitle.resx">
+      <DependentUpon>202005211641140_updateRemainingStaffMembersWitTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005221055166_ChangeInStudentModel.resx">
+      <DependentUpon>202005221055166_ChangeInStudentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005221140111_UpdateStudent.resx">
+      <DependentUpon>202005221140111_UpdateStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005221143306_UpdateStudent1.resx">
+      <DependentUpon>202005221143306_UpdateStudent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005221150316_ChangeIsEnrolledInStudent1.resx">
+      <DependentUpon>202005221150316_ChangeIsEnrolledInStudent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005231006385_ChangeInCourseSubjectModel.resx">
+      <DependentUpon>202005231006385_ChangeInCourseSubjectModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251403225_CreatedModelSubjectToCreateACourse.resx">
+      <DependentUpon>202005251403225_CreatedModelSubjectToCreateACourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251533448_changeInSubjectToCReateACourse.resx">
+      <DependentUpon>202005251533448_changeInSubjectToCReateACourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251638540_DeletedModelSubjectToYadaYadaYada.resx">
+      <DependentUpon>202005251638540_DeletedModelSubjectToYadaYadaYada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005271209017_AddUniversityStudent.resx">
+      <DependentUpon>202005271209017_AddUniversityStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012148467_ChangesInAccountViewModel.resx">
+      <DependentUpon>202006012148467_ChangesInAccountViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012217367_AddedRequiredToCourseModel.resx">
+      <DependentUpon>202006012217367_AddedRequiredToCourseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012244367_AddedRequiredAnnotationToTeacherModel.resx">
+      <DependentUpon>202006012244367_AddedRequiredAnnotationToTeacherModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012247057_ChangeToTeacherModel.resx">
+      <DependentUpon>202006012247057_ChangeToTeacherModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012248419_AnotherChangeInTeacher.resx">
+      <DependentUpon>202006012248419_AnotherChangeInTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012307050_AddedRequiredToUnis«versityStudentList.resx">
+      <DependentUpon>202006012307050_AddedRequiredToUnis«versityStudentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012314491_furtherRequiredsInUniStudentModel.resx">
+      <DependentUpon>202006012314491_furtherRequiredsInUniStudentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012344284_AddedRequiredToSubjectModel.resx">
+      <DependentUpon>202006012344284_AddedRequiredToSubjectModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012352061_AnotherChangeInSubjectModel.resx">
+      <DependentUpon>202006012352061_AnotherChangeInSubjectModel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59556</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44387/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

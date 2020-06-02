@@ -1,0 +1,36 @@
+﻿@model University_II.Models.CourseSubject
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("SaveCredits", "Subject"))
+{
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Subject.Title)
+        </td>
+        <td>
+            @Html.EditorFor(model => model.Subject.Credits, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Subject.Credits, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Subject.ID)
+    @Html.HiddenFor(model => model.Subject.Credits)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+<div>
+    @Html.ActionLink("Back to Course Details", "Details", "Course", new { id = Model.CourseId })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

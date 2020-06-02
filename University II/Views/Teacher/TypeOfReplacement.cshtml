@@ -1,0 +1,28 @@
+﻿@model University_II.ViewModels.TeachersToReplaceViewModel
+@{
+    ViewBag.Title = "TypeOfReplacement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.teachers.Count() == 0)
+{
+    @Html.ActionLink("Index", "Teachers")
+
+}
+
+<h2>Choose New Teacher</h2>
+
+@using (Html.BeginForm("SaveReplacement", "Teacher"))
+{
+    {
+        @Html.DropDownListFor(m => m.Id, new SelectList(Model.teachers, "Id", "Name"), new { @class = "from-control" })
+    }
+
+    <p></p>
+    <button type="submit" class=" btn btn-primary">Save</button>
+    <p></p>
+    <p></p>
+    @Html.ActionLink("Back to List", "Index")
+}
+
+

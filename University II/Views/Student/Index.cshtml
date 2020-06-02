@@ -1,0 +1,55 @@
+﻿@model IEnumerable<University_II.ViewModels.CourseStudentSubjectViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>University' Students and Grades</h2>
+
+@if(User.IsInRole("Secretary"))
+{
+<p>
+    @Html.ActionLink("Create New University Student", "CreateUniversityStudent")
+</p>
+
+
+}
+
+<table class="table">
+    
+    <tr>
+        <th>
+            Course
+        </th>
+        <th>
+            Subject
+        </th>
+        <th>
+            Student Name
+        </th>
+        <th>
+            Grade
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Course.Title, "Details", "Course", new { id = item.Course.Id }, null)
+            </td>
+            <td>
+                @Html.ActionLink(item.Subject.Title, "Details", "Subject", new { id = item.Subject.ID }, null)
+            </td>
+            <td>
+                @Html.ActionLink(item.Student.Name, "Details", "Student", new { id = item.Student.ID }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentSubject.Grade)
+            </td>
+        </tr>
+        
+     }
+
+</table>
