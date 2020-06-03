@@ -83,13 +83,18 @@ namespace University_II.Controllers
         [Authorize]
         public ActionResult EditGrade(int? studentSubjectId)
         {
-            if(studentSubjectId == 0 || !studentSubjectId.HasValue)
+            studentSubjectService = new StudentSubjectService();
+
+            if (studentSubjectId == 0 || !studentSubjectId.HasValue)
             {
                 return RedirectToAction("Index");
             }
 
             StudentSubject studentSubject = studentSubjectService
                 .GetStudentSubjectByStudentSubjectId((int)studentSubjectId);
+
+            if (studentSubject == null)
+                return RedirectToAction("Index");
             
             return View("EditGrade", studentSubject);
 
@@ -142,6 +147,9 @@ namespace University_II.Controllers
             Teacher teacher = teacherService.GetTeacherById(teacherId);
 
             IEnumerable<Subject> teacherSubjects = subjectService.getSubjectsByTeacherId(teacherId);
+
+            if (teacher == null || teacherSubjects == null)
+                return RedirectToAction("Index");
 
             List<TeacherSubjectNumberOfStudentsViewModel> viewModel = teacherService
                 .CreateTeacherSubjectNumberOfStudentsViewModel(teacher, teacherSubjects);

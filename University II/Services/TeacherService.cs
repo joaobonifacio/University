@@ -161,6 +161,8 @@ namespace University_II.Services
 
             foreach (Subject subject in teacherSubjects)
             {
+                studentSubjectService = new StudentSubjectService();
+
                 numberOfStudents = studentSubjectService.NumberOfStudentsPerSubject(subject);
 
                 TeacherSubjectNumberOfStudentsViewModel model =
