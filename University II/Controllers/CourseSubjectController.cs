@@ -29,12 +29,12 @@ namespace University_II.Controllers
         // GET: CourseSubject/Details/5
         public ActionResult Details(int? id)
         {
-            courseSubjectService = new CourseSubjectService();
-
             if (id == null || !id.HasValue)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index"); ;
             }
+
+            courseSubjectService = new CourseSubjectService();
 
             CourseSubject courseSubject = courseSubjectService.GetCourseSubjectByCourseSubjectId((int)id);
 
@@ -46,6 +46,7 @@ namespace University_II.Controllers
         }
 
         // GET: CourseSubject/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CourseId = new SelectList(db.Courses, "Id", "Title");
@@ -58,6 +59,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,CourseId,SubjectId")] CourseSubject courseSubject)
         {
             if (ModelState.IsValid)
@@ -73,6 +75,7 @@ namespace University_II.Controllers
         }
 
         // GET: CourseSubject/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -94,6 +97,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,CourseId,SubjectId")] CourseSubject courseSubject)
         {
             if (ModelState.IsValid)
@@ -108,6 +112,7 @@ namespace University_II.Controllers
         }
 
         // GET: CourseSubject/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             courseSubjectService = new CourseSubjectService();
@@ -129,6 +134,7 @@ namespace University_II.Controllers
         // POST: CourseSubject/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             courseSubjectService = new CourseSubjectService();

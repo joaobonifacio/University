@@ -282,8 +282,14 @@ namespace University_II.Services
 
         public IEnumerable<StudentSubject> FindStudentSubjectsBySubject(Subject subject)
         {
+            if (subject == null)
+                return null;
+
              IEnumerable<StudentSubject> studentsubjects = db.StudentSubjects.ToList();
              List<StudentSubject> studentSubjectsList = new List<StudentSubject>();
+
+            if (studentsubjects == null || studentSubjectsList.Count() == 0)
+                return null;
 
              foreach (StudentSubject studentSubject in studentsubjects)
              {

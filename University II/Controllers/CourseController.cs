@@ -61,6 +61,7 @@ namespace University_II.Controllers
         }
 
         // GET: Course/Create
+        [Authorize]
         public ActionResult Create()
         {
             Course course = new Course();
@@ -73,6 +74,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create(Course course)
         {
             subjectService = new SubjectService();
@@ -89,6 +91,7 @@ namespace University_II.Controllers
             return View(course);
         }
 
+        [Authorize]
         public ActionResult ValidateCourseSubject(int chosenSubjectId)
         {
             subjectService = new SubjectService();
@@ -139,6 +142,7 @@ namespace University_II.Controllers
 
 
         // GET: Course/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             courseService = new CourseService();
@@ -168,6 +172,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(Course course)
         {
             if(course == null)
@@ -187,6 +192,7 @@ namespace University_II.Controllers
         }
 
         // GET: Course/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             courseService = new CourseService();
@@ -214,6 +220,7 @@ namespace University_II.Controllers
         // POST: Course/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             courseSubjectService = new CourseSubjectService();

@@ -56,15 +56,15 @@ namespace University_II.Controllers
             studentSubjectService = new StudentSubjectService();
 
             Subject subject = subjectService.getSubjectById((int)id);
+
             Teacher teacher = teacherService.GetTeacherBySubjectId((int)id);
+
             IEnumerable<StudentSubject> studentSubjects = 
                 studentSubjectService.FindStudentSubjectsBySubject(subject);
 
-            if (subject == null)
-            {
-                return HttpNotFound();
-            }
-
+            if (subject == null || teacher == null || studentSubjects == null)
+                return RedirectToAction("Index");
+            
             List<TeacherStudentSubjectViewModel> viewModel = subjectService
                 .CreateTeacherStudentSubjectViewModel(subject, teacher, studentSubjects);
 
@@ -73,6 +73,7 @@ namespace University_II.Controllers
 
 
         // GET: Subject/Create
+        [Authorize]
         public ActionResult Create()
         {
             teacherService = new TeacherService();
@@ -93,6 +94,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult SaveNewSubject(TeacherSubjectViewModel viewModel)
         {
             subjectService = new SubjectService();
@@ -129,6 +131,7 @@ namespace University_II.Controllers
         }
 
         // GET: Subject/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             subjectService = new SubjectService();
@@ -163,6 +166,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(TeacherSubjectViewModel viewModel)
         {
             subjectService = new SubjectService();
@@ -178,6 +182,7 @@ namespace University_II.Controllers
         }
 
         // GET: Subject/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             subjectService = new SubjectService();
@@ -206,6 +211,7 @@ namespace University_II.Controllers
         // POST: Subject/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(TeacherSubjectViewModel viewModel)
         {
             subjectService = new SubjectService();
@@ -215,6 +221,7 @@ namespace University_II.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public ActionResult EditCredits(int? id, int? courseId)
         {
             courseSubjectService = new CourseSubjectService();
@@ -240,6 +247,7 @@ namespace University_II.Controllers
             return View(courseSubject);
         }
 
+        [Authorize]
         public ActionResult SaveCredits(Subject subject)
         {
             subjectService = new SubjectService();

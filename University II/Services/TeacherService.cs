@@ -275,8 +275,11 @@ namespace University_II.Services
         public Teacher GetTeacherBySubjectId(int Id)
         {
             Subject subject = db.Subjects.Find(Id);
-            Teacher teacher = db.Teachers.Find(subject.TeacherId);
 
+            if (subject == null)
+                return null;
+
+            Teacher teacher = db.Teachers.Find(subject.TeacherId);
 
             return teacher;
         }

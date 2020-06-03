@@ -20,16 +20,20 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Student.Title)
+            @Html.DisplayNameFor(model => model.Subject.Title)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Student.Title)
+            @Html.DisplayFor(model => model.Subject.Title)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
+    }
+    <p></p>
     @Html.ActionLink("Back to List", "Index")
 </p>

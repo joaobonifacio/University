@@ -13,6 +13,7 @@ namespace University_II.Controllers
         private StudentSubjectService studentSubjectService = new StudentSubjectService();
 
         // GET: StudentSubject
+        [Authorize]
         public ActionResult Index()
         {
             var studentSubjects = db.StudentSubjects.Include(s => s.Student).Include(s => s.Subject);
@@ -20,6 +21,7 @@ namespace University_II.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Save(StudentSubject studentSubject)
         {
             studentSubjectService = new StudentSubjectService();
@@ -31,6 +33,7 @@ namespace University_II.Controllers
         }
 
         // GET: StudentSubject/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             studentSubjectService = new StudentSubjectService();
@@ -51,6 +54,7 @@ namespace University_II.Controllers
         }
 
         // GET: StudentSubject/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.StudentID = new SelectList(db.Students, "ID", "Name");
@@ -63,6 +67,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "StudentSubjectID,SubjectID,StudentID,Grade")] StudentSubject studentSubject)
         {
             if (ModelState.IsValid)
@@ -78,6 +83,7 @@ namespace University_II.Controllers
         }
 
         // GET: StudentSubject/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null || !id.HasValue)
@@ -99,6 +105,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "StudentSubjectID,SubjectID,StudentID,Grade")] StudentSubject studentSubject)
         {
             if (ModelState.IsValid)
@@ -113,6 +120,7 @@ namespace University_II.Controllers
         }
 
         // GET: StudentSubject/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             studentSubjectService = new StudentSubjectService();
@@ -135,6 +143,7 @@ namespace University_II.Controllers
         // POST: StudentSubject/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             studentSubjectService = new StudentSubjectService();

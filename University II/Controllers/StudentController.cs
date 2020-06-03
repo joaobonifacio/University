@@ -45,6 +45,7 @@ namespace University_II.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         public ActionResult MySubjects(string email)
         {
             if(email == null)
@@ -85,6 +86,11 @@ namespace University_II.Controllers
 
             List<StudentSubject> studentSubjects = studentSubjectService.GetStudentSubjectsByStudentId((int)id);
 
+            if(studentSubjects.Count() == 0)
+            {
+                return RedirectToAction("Index");
+            }
+
             return View(studentSubjects);
         }
 
@@ -122,6 +128,7 @@ namespace University_II.Controllers
 
         
         // GET: Student/Create
+        [Authorize]
         public ActionResult CreateUniversityStudent()
         {
             courseService = new CourseService();
@@ -144,6 +151,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult CreateUniversityStudent(UniversityStudentsList student)
         {
             if (!ModelState.IsValid)
@@ -165,6 +173,7 @@ namespace University_II.Controllers
         }
 
         // GET: Student/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null || !id.HasValue)
@@ -196,6 +205,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(EditStudentViewModel editedStudent)
         {
            
@@ -213,6 +223,7 @@ namespace University_II.Controllers
         }
 
         // GET: Student/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             studentService = new StudentService();
@@ -235,6 +246,7 @@ namespace University_II.Controllers
         // POST: Student/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             uniService = new UniversityStudentsListService();

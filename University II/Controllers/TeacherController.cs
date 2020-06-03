@@ -51,15 +51,27 @@ namespace University_II.Controllers
             studentService = new StudentService();
 
             Teacher teacher = teacherService.getCorrespondingTeacher((int)teacherId);
-            
+
+            if (teacher  == null)
+                return RedirectToAction("Index");
+
             IEnumerable<StudentSubject> teacherStudentSubjects = teacherService
                 .GetTeacherStudentSubjectsByTeacherId((int)teacherId);
+
+            if (teacherStudentSubjects.Count() == 0)
+                return RedirectToAction("Index");
 
             IEnumerable<Student> teachersStudents = studentService
                 .GetStudentsByStudentSubjects(teacherStudentSubjects.ToList());
 
+            if (teachersStudents.Count() == 0)
+                return RedirectToAction("Index");
+
             IEnumerable<Subject> teachersSubjects = teacherService
                 .GetTeachersSubjectsFromTeachersStudentSubjectList(teacherStudentSubjects);
+
+            if (teachersSubjects.Count() == 0)
+                return RedirectToAction("Index");
 
             List<TeacherStudentsAndGradesViewModel> viewModel = teacherService
                 .CreateTeacherStudentsAndGradesViewModel(teacher, teacherStudentSubjects, teachersStudents, 
@@ -68,6 +80,7 @@ namespace University_II.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         public ActionResult EditGrade(int? studentSubjectId)
         {
             if(studentSubjectId == 0 || !studentSubjectId.HasValue)
@@ -82,6 +95,7 @@ namespace University_II.Controllers
 
         }
 
+        [Authorize]
         public ActionResult GradeStudents(int subjectID)
         {
             studentSubjectService = new StudentSubjectService();
@@ -92,6 +106,7 @@ namespace University_II.Controllers
             return View("AlternativeGradeStudents", studentSubjects);
         }
 
+        [Authorize]
         public ActionResult SaveGrade(StudentSubject studentSubject)
         {
             if(studentSubject.Grade == null)
@@ -111,6 +126,7 @@ namespace University_II.Controllers
             return RedirectToAction("MyStudents", "Teacher", new { email = teacher.Email });
         }
 
+        [Authorize]
         public ActionResult MySubjects(string email)
         {
             if(email == null)
@@ -133,6 +149,7 @@ namespace University_II.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         public ActionResult MyStudents(string email)
         {
             if(email == null)
@@ -159,7 +176,7 @@ namespace University_II.Controllers
         {
             if(teacherId == null || !teacherId.HasValue)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
 
             teacherService = new TeacherService();
@@ -174,6 +191,7 @@ namespace University_II.Controllers
             return View(teacher);
         }
 
+        [Authorize]
         public ActionResult ChangeTeacher(int? id)
         {
             if (id == null || !id.HasValue)
@@ -207,6 +225,7 @@ namespace University_II.Controllers
             return View("TypeOfReplacement", teachers);
         }
 
+        [Authorize]
         public ActionResult SaveReplacement(TeachersToReplaceViewModel model)
         {
             if(model == null)
@@ -228,6 +247,7 @@ namespace University_II.Controllers
         }
 
         // GET: Teacher/Create
+        [Authorize]
         public ActionResult Create()
         {
             Teacher teacher = new Teacher();
@@ -240,6 +260,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create(Teacher teacher)
         {
             if (!ModelState.IsValid)
@@ -259,6 +280,7 @@ namespace University_II.Controllers
         }
 
         // GET: Teacher/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null || !id.HasValue)
@@ -283,6 +305,7 @@ namespace University_II.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(Teacher teacher)
         {
             if(teacher == null)
@@ -302,6 +325,7 @@ namespace University_II.Controllers
         }
 
         // GET: Teacher/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null || !id.HasValue)
@@ -324,6 +348,7 @@ namespace University_II.Controllers
         // POST: Teacher/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int? id)
         {
             if(id == 0 || !id.HasValue)
@@ -354,6 +379,7 @@ namespace University_II.Controllers
             return RedirectToAction("HireNewTeacher");
         }
 
+        [Authorize]
         public ActionResult HireNewTeacher()
         {
             Teacher teacher = new Teacher();
@@ -367,6 +393,7 @@ namespace University_II.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ActionResult SaveNewTeacher(Teacher teacher)
         {
             teacherService = new TeacherService();
