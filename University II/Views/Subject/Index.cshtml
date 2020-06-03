@@ -31,14 +31,16 @@
         <th>
             Number of Students Enrolled
         </th>
+        <th></th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
 <tr>
     <td>
-        @Html.ActionLink(item.Subject.Title, "TeacherStudentsAndGrades", "Teacher", 
-       new { id = item.Teacher.Id}, null)
+        @Html.ActionLink(item.Subject.Title, "TeacherStudentsAndGrades", "Teacher",
+       new { id = item.Teacher.Id }, null)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Teacher.Name)
@@ -46,6 +48,15 @@
     <td>
         @Html.DisplayFor(modelItem => item.NumberOfStudents)
     </td>
+    @if (User.IsInRole("Dean"))
+    {
+        <td>
+            @Html.ActionLink("Edit Subject", "Edit", "Subject", new { id = item.Subject.ID }, null)
+        </td>
+        <td>
+            @Html.ActionLink("Delete Subject", "Delete", "Subject", new { id = item.Subject.ID }, null)
+        </td>
+    }
 </tr>
     }
 
