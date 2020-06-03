@@ -38,10 +38,18 @@
     @if (User.IsInRole("Dean"))
     {
         <td>
-            @Html.ActionLink("Edit Credits", "EditCredits", "Subject", new { id = item.Subject.ID, 
-           courseId = item.Course.Id }, null) 
+            @Html.ActionLink("Edit Credits", "EditCredits", "Subject", new
+            { id = item.Subject.ID, courseId = item.Course.Id }, null)
         </td>
-        }
+    }
+
+    @if (User.IsInRole("Dean"))
+    {
+        <td>
+            @Html.ActionLink("Change Subject", "ChangeCourseSubject", "Course", new
+            { id = item.Subject.ID, courseId = item.Course.Id }, null)
+        </td>
+    }
 </tr>
     }
 

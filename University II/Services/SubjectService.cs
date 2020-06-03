@@ -86,7 +86,7 @@ namespace University_II.Services
             List<TeacherStudentSubjectViewModel> viewModel = new List<TeacherStudentSubjectViewModel>();
 
             // in the case the subject has no students
-            if(studentSubjects == null)
+            if(studentSubjects == null || studentSubjects.Count() == 0)
             {
                 TeacherStudentSubjectViewModel model = new TeacherStudentSubjectViewModel()
                 {
@@ -96,20 +96,22 @@ namespace University_II.Services
 
                 viewModel.Add(model);
             }
-
-            // in the case the subject has students
-            foreach (StudentSubject studentSubject in studentSubjects)
+            else
             {
-                TeacherStudentSubjectViewModel model = new TeacherStudentSubjectViewModel()
+                // in the case the subject has students
+                foreach (StudentSubject studentSubject in studentSubjects)
                 {
-                    Subject = subject,
-                    Teacher = teacher,
-                    StudentSubject = studentSubject
-                };
+                    TeacherStudentSubjectViewModel model = new TeacherStudentSubjectViewModel()
+                    {
+                        Subject = subject,
+                        Teacher = teacher,
+                        StudentSubject = studentSubject
+                    };
 
-                viewModel.Add(model);
+                    viewModel.Add(model);
+                }
             }
-
+            
             return viewModel;
         }
 

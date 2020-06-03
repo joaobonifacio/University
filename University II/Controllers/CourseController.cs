@@ -140,6 +140,44 @@ namespace University_II.Controllers
             return View("AddSubjectsToCourse", remainingSubjects);
         }
 
+        [Authorize]
+        public ActionResult ChangeCourseSubject(int? id,  int? courseId)
+        {
+            if(id == 0 || !id.HasValue)
+                return RedirectToAction("Index");
+
+            if (courseId == 0 || !courseId.HasValue)
+                return RedirectToAction("Index");
+            
+            courseService = new CourseService();
+            subjectService = new SubjectService();
+            courseSubjectService = new CourseSubjectService();
+
+            // I have to create a view model which is an enumerable of course and all subjects
+            Course course = courseService.GetCourseByCourseId((int)id);
+            List<Subject> subjects = subjectService.getAllSubjects();
+
+            IEnumerable<CourseSubject> subjectsToChoose = courseSubjectService
+                .CreateCourseSubjectToChooseByCourseIdAndSubjectToDelete((int)courseId, (int)id, subjects);
+
+            // remove old subject from course = delete course subject
+            courseSubjectService.DeleteCourseSubjectBySubjectAndCourseIds(id, courseId);
+
+            return View(subjectsToChoose);
+        }
+
+        [Authorize]
+        public ActionResult AddNewSubjectToCourse(int courseId, int subjectId)
+        {
+            courseSubjectService = new CourseSubjectService();
+
+            // create new CourseSubject and save it to db
+            CourseSubject newCourseSubject = courseSubjectService
+                .CreateCourseSubjectByCourseIdAndSubjectId(courseId, subjectId);
+
+            return RedirectToAction("Details", new { id = newCourseSubject.CourseId });
+        }
+
 
         // GET: Course/Edit/5
         [Authorize]

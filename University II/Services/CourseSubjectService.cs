@@ -17,6 +17,7 @@ namespace University_II.Services
         private StudentService studentService;
         private StudentSubjectService studentSubjectService;
         private CourseSubjectService courseSubjectService;
+        private CourseService courseService;
 
 
 
@@ -156,6 +157,66 @@ namespace University_II.Services
             CourseSubject courseSubject = db.CourseSubjects.Find(id);
             db.CourseSubjects.Remove(courseSubject);
             db.SaveChanges();
+        }
+
+        public IEnumerable<CourseSubject> CreateCourseSubjectToChooseByCourseIdAndSubjectToDelete
+            (int courseId, int id, List<Subject> subjects)
+        {
+            subjectService = new SubjectService();
+            courseService = new CourseService();
+
+            Subject subjectToRemove = subjectService.getSubjectById(id);
+            Course course = courseService.GetCourseByCourseId(courseId);
+
+            if (subjectToRemove == null)
+                return null;
+
+            subjects.Remove(subjectToRemove);
+
+            List<CourseSubject> subjectsToChoose = new List<CourseSubject>();
+
+            foreach(Subject subject in subjects)
+            {
+                CourseSubject courseSubject = new CourseSubject()
+                {
+                    Course = course,
+                    Subject = subject
+                };
+
+                subjectsToChoose.Add(courseSubject);
+            }
+
+            return subjectsToChoose;
+        }
+
+        public void DeleteCourseSubjectBySubjectAndCourseIds(int? id, int? courseId)
+        {
+            IEnumerable<CourseSubject> courseSubjects = from cs in db.CourseSubjects
+                                                  join c in db.Courses
+                                                  on cs.CourseId equals courseId
+                                                  join s in db.Subjects
+                                                  on cs.SubjectId equals id
+                                                  select cs;
+
+            CourseSubject courseSubjectToDelete = courseSubjects.ToArray()[0];
+
+            db.CourseSubjects.Remove(courseSubjectToDelete);
+            db.SaveChanges();
+
+        }
+
+        public  CourseSubject CreateCourseSubjectByCourseIdAndSubjectId(int courseId, int subjectId)
+        {
+            CourseSubject newCourseSubject = new CourseSubject()
+            {
+                CourseId = courseId,
+                SubjectId = subjectId
+            };
+
+            db.CourseSubjects.Add(newCourseSubject);
+            db.SaveChanges();
+
+            return newCourseSubject;
         }
 
         public IEnumerable<CourseSubject> getAllCourseSubjectsFromCourse(Course course)

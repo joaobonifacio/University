@@ -288,7 +288,7 @@ namespace University_II.Services
              IEnumerable<StudentSubject> studentsubjects = db.StudentSubjects.ToList();
              List<StudentSubject> studentSubjectsList = new List<StudentSubject>();
 
-            if (studentsubjects == null || studentSubjectsList.Count() == 0)
+            if (studentsubjects == null || studentsubjects.Count() == 0)
                 return null;
 
              foreach (StudentSubject studentSubject in studentsubjects)

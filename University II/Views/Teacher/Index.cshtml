@@ -61,9 +61,8 @@
             <td>
                 @if (item.Subject != null)
                 {
-                    @Html.ActionLink(item.Subject.Title, "Details", "Teacher",
-                   new { teacherId = item.Teacher.Id }, null
-)
+                    @Html.ActionLink(item.Subject.Title, "Details", "Subject",
+                   new { id = item.Teacher.Id }, null)
                 }
                 else
                 {

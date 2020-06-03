@@ -62,7 +62,7 @@ namespace University_II.Controllers
             IEnumerable<StudentSubject> studentSubjects = 
                 studentSubjectService.FindStudentSubjectsBySubject(subject);
 
-            if (subject == null || teacher == null || studentSubjects == null)
+            if (subject == null || teacher == null)
                 return RedirectToAction("Index");
             
             List<TeacherStudentSubjectViewModel> viewModel = subjectService

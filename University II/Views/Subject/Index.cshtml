@@ -39,8 +39,8 @@
     {
 <tr>
     <td>
-        @Html.ActionLink(item.Subject.Title, "TeacherStudentsAndGrades", "Teacher",
-       new { id = item.Teacher.Id }, null)
+        @Html.ActionLink(item.Subject.Title, "Details", "Subject",
+       new { id = item.Subject.ID }, null)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Teacher.Name)
